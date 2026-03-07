@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import type { Movie } from "../../types/movie";
 import css from "./MovieModal.module.css";
 
@@ -28,7 +29,7 @@ const MovieModal = ({ movie, onClose }: MovieModalProps) => {
     }
   };
 
-  return (
+  return createPortal (
     <div
       className={css.backdrop}
       role="dialog"
@@ -59,7 +60,8 @@ const MovieModal = ({ movie, onClose }: MovieModalProps) => {
           </p>
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("moviemodal-root")!
   );
 };
 

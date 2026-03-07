@@ -11,7 +11,6 @@ const SearchBar = ({ onSubmit }: SearchBarProps) => {
 
     if (!query) {
       toast.error("Please enter your search query.");
-      onSubmit("");
       return;
     }
     onSubmit(query);
