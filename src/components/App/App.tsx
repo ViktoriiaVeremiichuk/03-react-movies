@@ -52,14 +52,17 @@ function App() {
   return (
     <div>
       <Toaster />
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar onSubmit={handleSearch} />
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
-      <MovieGrid movies={movies} onMovieClick={handleMovieClick} />
+      <MovieGrid movies={movies} onSelect={handleMovieClick} />
       {isMovieModalOpen && selectedMovie && (
         <MovieModal
           movie={selectedMovie}
-          onClose={() => setSelectedMovie(null)}
+          onClose={() => {
+            setSelectedMovie(null);
+            setIsMovieModalOpen(false);
+          }}
         />
       )}
     </div>
